@@ -1,7 +1,5 @@
 <?php
 
-include('functions.php');
-
 $uri_arr = explode('/', $_SERVER['REQUEST_URI']); 	// Get array from URL parts
 $img = end($uri_arr);			// Get file from end of URL
 $img = explode('?', $img);		// Prepare to remove any query string
@@ -16,18 +14,20 @@ try {
 
 $thumbnail = new Imagick(); // Prepare Imagick object
 
-
-if (is_numeric($video_id)) : 	// Vimeo IDs are all numbers...
+if (is_numeric($video_id)) { 	// Vimeo IDs are all numbers...
 
 	$url = get_vimeo_thumbnail($video_id);
 
+	$data = file_get_contents("http://vimeo.com/api/v2/video/$video_id.json");
+	$data = json_decode($data);
+
 	try {
-		$thumbnail->readImage($url);
+		$thumbnail->readImage($data[0]->thumbnail_large);
 	} catch (Exception $e) {
 		error_log($e);
 	}
 
-else : 	// If it has letters, perhaps it's a YouTube ID...
+} else { // If it has letters, perhaps it's a YouTube ID...
 
 	// Available thumbnail sizes
 	$youtube_thumbnail_sizes = array(
@@ -47,8 +47,7 @@ else : 	// If it has letters, perhaps it's a YouTube ID...
 			error_log($e);
 		}
 	}
-
-endif;
+}
 
 /**
  * Set default options here
