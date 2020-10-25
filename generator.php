@@ -14,7 +14,7 @@ try {
 
 $thumbnail = new Imagick(); // Prepare Imagick object
 
-if (is_numeric($video_id)) { 	// Vimeo IDs are all numbers...
+if (is_numeric($video_id)) { // Vimeo IDs are all numbers...
 
 	$url = get_vimeo_thumbnail($video_id);
 
@@ -26,7 +26,6 @@ if (is_numeric($video_id)) { 	// Vimeo IDs are all numbers...
 	} catch (Exception $e) {
 		error_log($e);
 	}
-
 } else { // If it has letters, perhaps it's a YouTube ID...
 
 	// Available thumbnail sizes
@@ -80,7 +79,12 @@ if ($options['width'] > 1920) {
 	$options['width'] = 1920;
 }
 
-if (isset($_GET['save']) && ($_GET['save'] === 'false' || $_GET['save'] === 'no' || $_GET['save'] === 0)) {
+if (
+	isset($_GET['save']) &&
+	($_GET['save'] === 'false' ||
+		$_GET['save'] === 'no' ||
+		$_GET['save'] === 0)
+) {
 	$options['save'] = false;
 }
 
@@ -130,6 +134,6 @@ if ($options['save'] === true) {
 	$thumbnail->writeImage();
 }
 
-// Display the image from this initial call... subsequential calls will serve the image file directly. 
+// Display the image from this initial call... subsequential calls will serve the image file directly if &save=true was set in the URL. 
 header("Content-Type: image/jpeg");
 echo $thumbnail->getImageBlob();
