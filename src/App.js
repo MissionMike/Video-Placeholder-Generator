@@ -9,19 +9,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseUrl: "https://tools.missionmike.dev/thumbnail-generator/",
-      videoId: "",
-      defaultVideoUrl: "https://www.youtube.com/watch?v=7NOSDKb0HlU",
-      playButtonOpacity: 0.8,
+      baseUrl: "https://tools.missionmike.dev/video-thumbnail-generator/thumbnails/",
+      thumbnailWidth: 600,
+      playButtonWidth: 80,
+      playButtonUrl: "https://tools.missionmike.dev/video-thumbnail-generator/assets/youtube_play.png",
+      videoId: "7NOSDKb0HlU",
+      playButtonOpacity: 80,
     };
   }
 
-  componentDidMount() {
-    let videoData = utils.parseVideo(this.state.defaultVideoUrl);
-    this.setState({ videoId: videoData.id });
-  }
-
-  handleURLChange = (evt) => {
+  handleUrlChange = (evt) => {
     let videoUrl = evt.target.value,
       videoData = utils.parseVideo(videoUrl);
 
@@ -30,24 +27,52 @@ export default class App extends React.Component {
     }
   };
 
+  handleThumbnailWidthChange = (evt) => {
+    this.setState({ thumbnailWidth: evt.target.value });
+  };
+
+  handlePlayButtonUrlChange = (evt) => {
+    this.setState({ playButtonUrl: evt.target.value });
+  };
+
+  handlePlayButtonWidthChange = (evt) => {
+    this.setState({ playButtonWidth: evt.target.value });
+  };
+
+  handlePlayButtonOpacityChange = (evt) => {
+    this.setState({playButtonOpacity: evt.target.value});
+  }
+
   render() {
     return (
-      <>
+      <div>
         <Header />
-        <Form
-          baseUrl={this.state.baseUrl}
-          videoId={this.state.videoId}
-          playButtonOpacity={this.state.playButtonOpacity}
-          defaultVideoUrl={this.state.defaultVideoUrl}
-          handleURLChange={this.handleURLChange.bind(this)}
-        />
-        <div className="lg:w-1/3"></div>
-        <VideoPlaceholder
-          baseUrl={this.state.baseUrl}
-          videoId={this.state.videoId}
-          playButtonOpacity={this.state.playButtonOpacity}
-        />
-      </>
+        <div className="flex bg-gray-200">
+          <div className="w-1/2">
+            <Form
+              baseUrl={this.state.baseUrl}
+              videoId={this.state.videoId}
+              playButtonUrl={this.state.playButtonUrl}
+              playButtonOpacity={this.state.playButtonOpacity}
+              handleUrlChange={this.handleUrlChange.bind(this)}
+              handleThumbnailWidthChange={this.handleThumbnailWidthChange.bind(this)}
+              handlePlayButtonUrlChange={this.handlePlayButtonUrlChange.bind(this)}
+              handlePlayButtonWidthChange={this.handlePlayButtonWidthChange.bind(this)}
+              handlePlayButtonOpacityChange={this.handlePlayButtonOpacityChange.bind(this)}
+            />
+          </div>
+          <div className="w-1/2">
+            <VideoPlaceholder
+              baseUrl={this.state.baseUrl}
+              videoId={this.state.videoId}
+              thumbnailWidth={this.state.thumbnailWidth}
+              playButtonUrl={this.state.playButtonUrl}
+              playButtonWidth={this.state.playButtonWidth}
+              playButtonOpacity={this.state.playButtonOpacity}
+            />
+          </div>
+        </div>
+      </div>
     );
   }
 }

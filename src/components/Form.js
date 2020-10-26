@@ -1,69 +1,80 @@
 import React from "react";
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { copySuccess: "" };
-  }
-
-  copyToClipboard = (evt) => {
-    this.emailFriendlyUrl.select();
-    document.execCommand("copy");
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    evt.target.focus();
-    this.setState({ copySuccess: "Copied!" });
-  };
-
   render() {
     return (
-      <div className="flex content-around flex-wrap bg-gray-200 pt-5 pb-5">
-        <div className="lg:w-1/3"></div>
-        <div className="w-full lg:w-1/3 p-2">
-          <label htmlFor="video-url" className="text-bold mb-2 block pl-1">
-            Video URL (YouTube, Vimeo):
+      <div className="p-5">
+        <label htmlFor="video-url" className="text-bold mb-2 block pl-2">
+          Video URL (YouTube, Vimeo):
+        </label>
+        <input
+          type="url"
+          className="input focus:outline-none focus:shadow-outline"
+          defaultValue={"https://www.youtube.com/watch?v=" + this.props.videoId}
+          placeholder="Enter a YouTube or Vimeo URL here:"
+          id="video-url"
+          name="video-url"
+          onChange={this.props.handleUrlChange}
+        />
+        <div className="w-1/2 mt-5">
+          <label htmlFor="thumbnail-width" className="text-bold mb-2 block pl-2">
+            Thumbnail Width (Pixels)
           </label>
           <input
-            type="url"
+            type="number"
             className="input focus:outline-none focus:shadow-outline"
-            defaultValue={this.props.defaultVideoUrl}
-            placeholder="Enter a YouTube or Vimeo URL here:"
-            id="video-url"
-            name="video-url"
-            onChange={this.props.handleURLChange}
+            min="1"
+            max="1920"
+            defaultValue="600"
+            id="thumbnail-width"
+            name="thumbnail-width"
+            onChange={this.props.handleThumbnailWidthChange}
           />
         </div>
-        <div className="lg:w-1/3"></div>
-        <div className="lg:w-1/3"></div>
-        <div className="w-full lg:w-1/3 p-2">
-          <label
-            htmlFor="email-friendly-url"
-            className="text-bold mb-2 block pl-1"
-          >
-            <strong>Email-friendly URL</strong>{" "}
-            <em>
-              *Note: once used, the thumbnail cannot be changed unless removed
-              from the server
-            </em>{" "}
-            <span className="text-green-700">{this.state.copySuccess}</span>
-          </label>
-          <textarea
-            id="email-friendly-url"
-            className="p-2 bg-white m-0 overflow-hidden w-full"
-            ref={(emailFriendlyUrl) =>
-              (this.emailFriendlyUrl = emailFriendlyUrl)
-            }
-            onClick={this.copyToClipboard}
-            defaultValue={
-              this.props.baseUrl +
-              this.props.videoId +
-              ".jpg" +
-              "&play_button_opacity=" +
-              this.props.playButtonOpacity
-            }
-          ></textarea>
+        <label htmlFor="play-button-url" className="text-bold mb-2 block pl-2 mt-5">
+          Play Button Graphic URL
+        </label>
+        <input
+          type="url"
+          className="input focus:outline-none focus:shadow-outline"
+          defaultValue={this.props.playButtonUrl}
+          placeholder="Enter URL to a play button graphic here:"
+          id="play-button-url"
+          name="play-button-url"
+          onChange={this.props.handlePlayButtonUrlChange}
+        />
+        <div className="flex">
+          <div className="w-1/2 mt-5">
+            <label htmlFor="play-button-width" className="text-bold mb-2 block pl-2">
+              Play Button Width (Pixels)
+            </label>
+            <input
+              type="number"
+              className="input focus:outline-none focus:shadow-outline"
+              min="1"
+              max="1920"
+              defaultValue="80"
+              id="play-button-width"
+              name="play-button-width"
+              onChange={this.props.handlePlayButtonWidthChange}
+            />
+          </div>
+          <div className="w-1/2 mt-5">
+            <label htmlFor="play-button-opacity" className="text-bold mb-2 block pl-2">
+              Play Button Opacity (Percent)
+            </label>
+            <input
+              type="number"
+              className="input focus:outline-none focus:shadow-outline"
+              min="0"
+              max="100"
+              defaultValue="80"
+              id="play-button-opacity"
+              name="play-button-opacity"
+              onChange={this.props.handlePlayButtonOpacityChange}
+            />
+          </div>
         </div>
-        <div className="lg:w-1/3"></div>
       </div>
     );
   }
