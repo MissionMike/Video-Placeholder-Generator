@@ -33,3 +33,17 @@ export function parseVideo(url) {
     id: RegExp.$6,
   };
 }
+
+/**
+ * Check if a file exists
+ * 
+ * @link https://stackoverflow.com/questions/48259512/how-to-check-if-a-pariticular-fileexists-in-reactjs
+ * @param {string} path filepath
+ */
+export function tryRequire(path) {
+  try {
+    return require(`${path}`);
+  } catch (err) {
+    return null;
+  }
+}
