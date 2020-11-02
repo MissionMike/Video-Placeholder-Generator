@@ -11,6 +11,6 @@ module.exports = {
   thumbnailWidth: 600,
   playButtonWidth: 80,
   playButtonUrl: "https://api.missionmike.dev/video-placeholder-generator/assets/youtube_play.png",
-  videoId: "7NOSDKb0HlU",
+  videoId: "H79gstz4qZI",
   playButtonOpacity: 80,
 };
