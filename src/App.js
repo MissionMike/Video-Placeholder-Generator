@@ -1,10 +1,17 @@
 import React from "react";
+
 import * as utils from "./functions/utils";
 import * as defaults from "./defaults";
 
 import Header from "./components/Header";
 import Form from "./components/Form";
 import VideoPlaceholder from "./components/VideoPlaceholder";
+
+try {
+  require(`./analytics.js`);
+} catch (err) {
+  console.log(err);
+}
 
 export default class App extends React.Component {
   constructor(props) {
@@ -18,19 +25,6 @@ export default class App extends React.Component {
       playButtonOpacity: defaults.playButtonOpacity,
       copySuccess: false,
     };
-
-    /**
-     * Check if analytics.js exists. If this file exists, it should contain
-     * any pertinent code for analytics tracking.
-     * 
-     * Example for using analytics.js for Google Analytics (react-ga), 
-     * sample file contents:
-     * 
-     * import ReactGA from "react-ga";
-     * ReactGA.initialize("UA-00000000-1");
-     * ReactGA.pageview(window.location.pathname + window.location.search);
-     */
-    utils.tryRequire(`./analytics.js`);
   }
 
   handleUrlChange = (evt) => {

@@ -4,9 +4,12 @@
   "private": true,
   "homepage": "/video-placeholder-generator/",
   "dependencies": {
+    "@sentry/react": "^5.27.2",
+    "@sentry/tracing": "^5.27.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "logrocket": "^1.0.14",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-ga": "^3.2.0",
