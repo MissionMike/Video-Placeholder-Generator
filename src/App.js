@@ -7,6 +7,11 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import VideoPlaceholder from "./components/VideoPlaceholder";
 
+/**
+ * If you'd like to include any analytics or additional tracking
+ * (Google Analytics, Sentry.io, LogRocket, etc.), create an "analytics.js"
+ * file and add your code there.
+ */
 try {
   require(`./analytics.js`);
 } catch (err) {
