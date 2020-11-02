@@ -9,4 +9,4 @@ Customizable options include:
 
 More to come!
 
-https://tools.missionmike.dev/video-thumbnail-generator/
+https://www.missionmike.dev/video-placeholder-generator/
