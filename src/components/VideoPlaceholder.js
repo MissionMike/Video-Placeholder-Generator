@@ -3,9 +3,9 @@ import React from "react";
 class VideoPlaceholder extends React.Component {
   render() {
     return (
-      <div className="w-full h-full relative">
+      <div className="w-full h-full flex">
           <img
-            className="relative lg:absolute m-auto top-0 bottom-0 left-0 right-0"
+            className="align-items-center m-auto top-0 bottom-0 left-0 right-0"
             id="video-placeholder"
             alt="Video Placeholder"
             src={
