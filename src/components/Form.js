@@ -78,11 +78,28 @@ class Form extends React.Component {
           />
         </div>
         <div className="w-full mt-4">
+          <label htmlFor="server-url" className="text-bold mb-1 block pl-2">
+            Server URL
+          </label>
+          <input
+            type="url"
+            className="input focus:outline-none focus:shadow-outline"
+            min="0"
+            max="100"
+            value={this.props.serverUrl}
+            id="server-url"
+            name="server-url"
+            onChange={this.props.handleServerUrlChange}
+          />
+        </div>
+        <div className="w-full mt-4">
           <button
             className="input focus:outline-none focus:shadow-outline"
             id="reset-to-default"
             onClick={this.props.handleResetToDefault}
-          >Reset to Defaults</button>
+          >
+            Reset to Defaults
+          </button>
         </div>
       </div>
     );

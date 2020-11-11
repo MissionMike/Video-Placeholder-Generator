@@ -22,7 +22,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseUrl: defaults.baseUrl,
+      serverUrl: defaults.serverUrl,
       videoId: defaults.videoId,
       thumbnailWidth: defaults.thumbnailWidth,
       playButtonUrl: defaults.playButtonUrl,
@@ -57,6 +57,10 @@ export default class App extends React.Component {
     this.setState({ playButtonOpacity: evt.target.value });
   };
 
+  handleServerUrlChange = (evt) => {
+    this.setState({ serverUrl: evt.target.value });
+  };
+
   handleResetToDefault = (evt) => {
     this.setState({
       thumbnailWidth: defaults.thumbnailWidth,
@@ -73,18 +77,22 @@ export default class App extends React.Component {
   };
 
   render() {
+    let playButtonUrl =
+      this.state.playButtonUrl === defaults.playButtonUrl
+        ? ""
+        : "&pburl=" + encodeURIComponent(this.state.playButtonUrl);
+
     let thumbnailUrl =
-      this.state.baseUrl +
+      this.state.serverUrl +
+      "thumbnails/" +
       this.state.videoId +
-      ".jpg" +
-      "?play_button_url=" +
-      encodeURIComponent(this.state.playButtonUrl) +
-      "&width=" +
+      ".jpg?w=" +
       this.state.thumbnailWidth +
-      "&play_button_width=" +
+      "&pbw=" +
       this.state.playButtonWidth +
-      "&play_button_opacity=" +
-      this.state.playButtonOpacity;
+      "&pbo=" +
+      this.state.playButtonOpacity +
+      playButtonUrl;
 
     return (
       <div className="font-sans">
@@ -92,17 +100,18 @@ export default class App extends React.Component {
         <div className="block lg:flex bg-gray-200">
           <div className="w-full lg:w-1/4 p-2 lg:p-5">
             <Form
-              baseUrl={this.state.baseUrl}
               videoId={this.state.videoId}
               thumbnailWidth={this.state.thumbnailWidth}
               playButtonWidth={this.state.playButtonWidth}
               playButtonUrl={this.state.playButtonUrl}
               playButtonOpacity={this.state.playButtonOpacity}
+              serverUrl={this.state.serverUrl}
               handleUrlChange={this.handleUrlChange.bind(this)}
               handleThumbnailWidthChange={this.handleThumbnailWidthChange.bind(this)}
               handlePlayButtonUrlChange={this.handlePlayButtonUrlChange.bind(this)}
               handlePlayButtonWidthChange={this.handlePlayButtonWidthChange.bind(this)}
               handlePlayButtonOpacityChange={this.handlePlayButtonOpacityChange.bind(this)}
+              handleServerUrlChange={this.handleServerUrlChange.bind(this)}
               handleResetToDefault={this.handleResetToDefault.bind(this)}
             />
           </div>

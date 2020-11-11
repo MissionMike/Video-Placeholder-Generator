@@ -7,10 +7,10 @@
  * support/hosting is not guaranteed :)
  */
 module.exports = {
-  baseUrl: "https://api.missionmike.dev/video-placeholder-generator/thumbnails/",
+  serverUrl: "https://api.missionmike.dev/video-placeholder-generator/",
   thumbnailWidth: 600,
   playButtonWidth: 80,
-  playButtonUrl: "https://api.missionmike.dev/video-placeholder-generator/assets/youtube_play.png",
+  playButtonUrl: "",
   videoId: "H79gstz4qZI",
   playButtonOpacity: 80,
 };
