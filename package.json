@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "video-placeholder-generator-client",
+  "version": "1.0.2",
   "private": true,
   "homepage": "/video-placeholder-generator/",
   "dependencies": {
@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "logrocket": "^1.0.14",
     "react": "^16.14.0",
+    "react-debounce-input": "^3.2.3",
     "react-dom": "^16.14.0",
     "react-ga": "^3.2.0",
     "react-scripts": "3.4.3",

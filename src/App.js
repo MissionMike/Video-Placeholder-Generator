@@ -15,7 +15,7 @@ import VideoPlaceholder from "./components/VideoPlaceholder";
 try {
   require(`./analytics.js`);
 } catch (err) {
-  console.log(err);
+  // I guess there's no analytics!
 }
 
 export default class App extends React.Component {

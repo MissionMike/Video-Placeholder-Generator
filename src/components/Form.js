@@ -1,4 +1,5 @@
 import React from "react";
+import { DebounceInput } from "react-debounce-input";
 
 class Form extends React.Component {
   render() {
@@ -22,8 +23,9 @@ class Form extends React.Component {
           <label htmlFor="thumbnail-width" className="text-bold mb-1 block pl-2">
             Thumbnail Width (Pixels)
           </label>
-          <input
+          <DebounceInput
             type="number"
+            debounceTimeout={1000}
             className="input focus:outline-none focus:shadow-outline"
             min="1"
             max="1920"
@@ -51,8 +53,9 @@ class Form extends React.Component {
           <label htmlFor="play-button-width" className="text-bold mb-1 block pl-2">
             Play Button Width (Pixels)
           </label>
-          <input
+          <DebounceInput
             type="number"
+            debounceTimeout={1000}
             className="input focus:outline-none focus:shadow-outline"
             min="1"
             max="1920"
@@ -66,8 +69,9 @@ class Form extends React.Component {
           <label htmlFor="play-button-opacity" className="text-bold mb-1 block pl-2">
             Play Button Opacity (Percent)
           </label>
-          <input
+          <DebounceInput
             type="number"
+            debounceTimeout={1000}
             className="input focus:outline-none focus:shadow-outline"
             min="0"
             max="100"
@@ -81,8 +85,9 @@ class Form extends React.Component {
           <label htmlFor="server-url" className="text-bold mb-1 block pl-2">
             Server URL
           </label>
-          <input
+          <DebounceInput
             type="url"
+            debounceTimeout={1000}
             className="input focus:outline-none focus:shadow-outline"
             min="0"
             max="100"

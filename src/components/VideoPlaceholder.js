@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 class VideoPlaceholder extends React.Component {
   render() {
