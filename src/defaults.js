@@ -9,7 +9,7 @@ require("dotenv").config();
  * support/hosting is not guaranteed :)
  */
 module.exports = {
-  serverUrl: process.env.SERVER_URL || "https://api.missionmike.dev/video-placeholder-generator/",
+  serverUrl: process.env.SERVER_URL || "https://tools.missionmike.dev/video-placeholder-generator/",
   thumbnailWidth: 600,
   playButtonWidth: 80,
   playButtonUrl: "",
