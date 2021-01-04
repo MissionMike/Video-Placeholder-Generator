@@ -2,7 +2,7 @@
   "name": "video-placeholder-generator-client",
   "version": "1.0.2",
   "private": true,
-  "homepage": "/",
+  "homepage": "/video-placeholder-generator/",
   "dependencies": {
     "@sentry/react": "^5.27.2",
     "@sentry/tracing": "^5.27.2",
