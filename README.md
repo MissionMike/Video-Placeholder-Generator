@@ -17,4 +17,4 @@ More to come!
 
 Try it out here: https://www.missionmike.dev/video-placeholder-generator/
 
-Check out the server-side utility here: https://github.com/MissionMike/Video-Placeholder-Generator-Server
+Check out the server-side utility here: https://github.com/missionmike/video-placeholder-generator-server
